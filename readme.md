@@ -575,10 +575,33 @@ The concept of snippets can be applied on the sample blog app by following the s
 
 5. Add/Edit some blog posts so that they are assigned in some categories
 
-    Figure 7
-
 6. Test if changes are reflected. Visit a blog post and check if there are categories displayed.
 
 ### Deploying the First Wagtail Site to Heroku
 
 The method used for deployment is through `Heroku CLI`.
+
+1. Install `Heroku CLI` (https://devcenter.heroku.com/articles/heroku-cli).
+2. Log in using your Heroku account using the command below
+
+    `heroku login`
+
+3. Create a Procfile on the root directory and add the command below
+
+    `web: gunicorn firstwagtailsite.wsgi --log-file -`
+
+4. Go to your `first wagtail site` folder. If not yet in a repository, initialize git and point the repository to Heroku instance. Add and commit the changes, then push them to heroku master.
+
+    `go to first wagtail site folder`
+
+    `git init`
+
+    `heroku git:remote -a first-wagtail-site`
+
+    `git add -A`
+
+    `git commit -am "initial commit"`
+
+    `git push heroku master`
+
+4. 

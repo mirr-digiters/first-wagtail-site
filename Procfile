@@ -1,0 +1,1 @@
+web: gunicorn firstwagtailsite.wsgi --log-file -
