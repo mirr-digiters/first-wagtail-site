@@ -586,13 +586,25 @@ The method used for deployment is through `Heroku CLI`.
 
     `heroku login`
 
-3. Create a Procfile on the root directory and add the command below
+3. Make sure that `gunicorn` is installed on the Heroku instance. Add `gunicorn` to `requirements.txt` to ensure this.
 
-    `web: gunicorn firstwagtailsite.wsgi --log-file -`
+    `requirements.txt`:
+    ```
+    Django>=2.0,<2.1
+    wagtail>=2.2,<2.3
+    gunicorn>=19.9.0
+    ```
 
-4. Go to your `first wagtail site` folder. If not yet in a repository, initialize git and point the repository to Heroku instance. Add and commit the changes, then push them to heroku master.
+4. Create a `Procfile` on the root directory and add the command below
 
-    `go to first wagtail site folder`
+    `Procfile`:
+    ```
+    web: gunicorn firstwagtailsite.wsgi --log-file -
+    ```
+
+5. Go to your `first wagtail site` folder. If not yet in a repository, initialize git and point the repository to Heroku instance. Add and commit the changes, then push them to heroku master.
+
+    `cd first/wagtail/site/folder`
 
     `git init`
 
@@ -604,4 +616,10 @@ The method used for deployment is through `Heroku CLI`.
 
     `git push heroku master`
 
-4. 
+6. Test if the deployment is successful by visiting the Heroku app 
+
+    `heroku open`
+
+### References
+- http://docs.wagtail.io/en/latest/getting_started/tutorial.html
+- https://devcenter.heroku.com/articles/python-gunicorn
