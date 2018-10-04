@@ -620,6 +620,28 @@ The method used for deployment is through `Heroku CLI`.
 
     `heroku open`
 
+### Static Assets on Heroku Using Whitenoise
+
+1. Make sure that `whitenoise` is installed on the Heroku instance. Add `whitenoise` to `requirements.txt` to ensure this.
+
+    `requirements.txt`:
+    ```
+    Django>=2.0,<2.1
+    wagtail>=2.2,<2.3
+    gunicorn>=19.9.0
+    whitenoise>=4.1
+    ```
+
+2. Add the following to `dev.py` settings file.
+    ```python
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+    COMPRESS_OFFLINE = True
+    COMPRESS_CSS_FILTERS = [
+        'compressor.filters.css_default.CssAbsoluteFilter',
+        'compressor.filters.cssmin.CSSMinFilter',
+    ]
+    ```
 ### References
 - http://docs.wagtail.io/en/latest/getting_started/tutorial.html
 - https://devcenter.heroku.com/articles/python-gunicorn
