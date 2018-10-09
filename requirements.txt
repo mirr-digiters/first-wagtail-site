@@ -2,3 +2,4 @@ Django>=2.0,<2.1
 wagtail>=2.2,<2.3
 gunicorn>=19.9.0
 whitenoise>=4.1
+django_compressor>=2.2
